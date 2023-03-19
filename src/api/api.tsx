@@ -1,8 +1,5 @@
 import axios from "axios";
 const URL = "http://localhost:8080/api/v1";
-
-
-
 const getPosts = () => {
     axios.post('http://localhost:8080/graphql/', {
         query: `
@@ -17,7 +14,7 @@ const getPosts = () => {
         .then((res) => {
 
             const andrey = res.data.data.getPosts
-            andrey.forEach(function (data: any, index: number){
+            andrey.forEach(function (data: any){
                     console.log(data)
                 }
 
@@ -34,14 +31,10 @@ const sendPost = (message: string) => {
     axios.post(URL, {
         message: message
     })
-        .then(function (response) {
-        })
         .catch(function (error) {
             console.log(error);
         });
 }
-
-
 
 const API = {
     getPosts,

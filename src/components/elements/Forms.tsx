@@ -1,20 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import Form from "./Form";
 import Input from "./Input";
-
 import axios from "axios";
 import {CircularProgress} from "@mui/material";
-
-
-
-
-const Forms = () => {
+ const Forms = () => {
     const [messageText, setMessageText]: any = useState("");
     const [isLoading, setLoading] = useState(false)
-    const [daun, setDaun] = useState("");
-    let ando = {
-        Message: "lox",
-    };
+
 
     useEffect(() => {
         const getPosts = () => {
@@ -51,10 +43,6 @@ const Forms = () => {
 
     }, [])
 
-
-
-
-
     return (
         <div>
             {isLoading ? (
@@ -64,8 +52,6 @@ const Forms = () => {
                 {messageText && messageText.map((data: any) => (
                     <Form  key={data.id} message={data.message}/>
                     ))}
-
-
             </div>
             <Input/>
         </div>

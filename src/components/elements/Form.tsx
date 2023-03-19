@@ -1,8 +1,5 @@
 import React from 'react';
 import  form from "../../UI/styles/forms.module.scss";
-
-
-
 const Form = ({message} : {message: string}) => {
 
     return (

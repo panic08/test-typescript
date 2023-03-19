@@ -1,16 +1,11 @@
 import React, {useState} from 'react';
-import  form from "../../UI/styles/forms.module.scss";
 import API from "../../api/api";
 import Button from '@mui/material/Button'
-
 import {Alert, AlertTitle, TextField} from "@mui/material";
-
-
 
 const Input = () => {
     const [message, setMessage] = useState("");
     const [successful, setSuccessful] = useState(false);
-
     const handleSubmit = (e: any) => {
         e.preventDefault()
         API.sendPost(message)
