@@ -3,12 +3,14 @@ import Form from "./Form";
 import Input from "./Input";
 
 import axios from "axios";
+import {CircularProgress} from "@mui/material";
 
 
 
 
 const Forms = () => {
     const [messageText, setMessageText]: any = useState("");
+    const [isLoading, setLoading] = useState(false)
     const [daun, setDaun] = useState("");
     let ando = {
         Message: "lox",
@@ -16,6 +18,7 @@ const Forms = () => {
 
     useEffect(() => {
         const getPosts = () => {
+            setLoading(true)
             axios.post('http://localhost:8080/graphql/', {
                 query: `
   {
@@ -27,7 +30,7 @@ const Forms = () => {
   `
             })
                 .then((res) => {
-
+                    setLoading(false)
                     const andrey = res.data.data.getPosts
 
 
@@ -39,6 +42,7 @@ const Forms = () => {
 
                 })
                 .catch((error) => {
+                    setLoading(false)
                     console.error(error)
                 })
         };
@@ -53,9 +57,12 @@ const Forms = () => {
 
     return (
         <div>
+            {isLoading ? (
+            <CircularProgress style={{alignItems: "center", margin: "0 850px", justifyContent: "center", textAlign: "center"}}/>
+                ) : null}
             <div style={{alignItems: "center", justifyContent: "center", textAlign: "center"}}>
                 {messageText && messageText.map((data: any) => (
-                    <Form key={data.id} message={data.message}/>
+                    <Form  key={data.id} message={data.message}/>
                     ))}
 
 

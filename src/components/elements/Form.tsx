@@ -1,5 +1,5 @@
 import React from 'react';
-import  form from "../../UI/styles/forms.module.css";
+import  form from "../../UI/styles/forms.module.scss";
 
 
 
