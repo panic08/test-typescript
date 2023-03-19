@@ -15,7 +15,15 @@ const getPosts = () => {
   `
     })
         .then((res) => {
-            console.log(res.data.data.getPosts);
+
+            const andrey = res.data.data.getPosts
+            andrey.forEach(function (data: any, index: number){
+                    console.log(data)
+                }
+
+            )
+
+
         })
         .catch((error) => {
             console.error(error)
