@@ -4,6 +4,7 @@ import  form from "../../UI/styles/forms.module.css";
 
 
 const Form = ({message} : {message: string}) => {
+
     return (
         <div>
                 <div className={form.form}>

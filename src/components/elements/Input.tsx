@@ -1,14 +1,41 @@
-import React from 'react';
+import React, {useState} from 'react';
 import  form from "../../UI/styles/forms.module.css";
+import API from "../../api/api";
+import Button from '@mui/material/Button'
+
+import {Alert, AlertTitle, TextField} from "@mui/material";
+
+
+
 const Input = () => {
+    const [message, setMessage] = useState("");
+    const [successful, setSuccessful] = useState(false);
+
+    const handleSubmit = (e: any) => {
+        e.preventDefault()
+        API.sendPost(message)
+        setMessage("")
+        setSuccessful(true)
+    }
+    const handleChange = (e: any) => {
+        setMessage(e.target.value);
+    }
+
     return (
         <div>
             <div>
-                <input className={form.input} style={{alignItems: "center", justifyContent: "center", textAlign: "center", margin: "0px 655px"}}/>
+                <TextField id="outlined-basic" label="Outlined" variant="outlined" onChange={handleChange} value={message}  style={{alignItems: "center", justifyContent: "center", textAlign: "center", margin: "0px 650px"}}/>
 
 
-                <a className={form.button} style={{margin: "0 -620px"}}>Отправить</a>
+                <Button variant="contained"  onClick={handleSubmit}  style={{margin: "8px -620px"}}>Отправить</Button>{' '}
+
             </div>
+            {successful ? (
+            <Alert style={{width: "520px", margin: "15px 650px"}} severity="success">
+                <AlertTitle>Успешно</AlertTitle>
+                <strong>Вы успешно отправили сообщение</strong>
+            </Alert>
+                ) : null }
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "http://localhost:8080/graphql/";
+const URL = "http://localhost:8080/api/v1";
 
 
 
@@ -29,19 +29,15 @@ const getPosts = () => {
             console.error(error)
         })
 };
-const getLox = () => {
+const sendPost = (message: string) => {
 
-    axios.get('http://localhost:8080/api/v1/')
+    axios.post(URL, {
+        message: message
+    })
         .then(function (response) {
-            // handle success
-            console.log(response);
         })
         .catch(function (error) {
-            // handle error
             console.log(error);
-        })
-        .finally(function () {
-            // always executed
         });
 }
 
@@ -49,6 +45,6 @@ const getLox = () => {
 
 const API = {
     getPosts,
-    getLox,
+    sendPost,
 };
 export default API;
