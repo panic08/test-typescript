@@ -11,7 +11,7 @@ import {CircularProgress} from "@mui/material";
     useEffect(() => {
         const getPosts = () => {
             setLoading(true)
-            axios.post('http://localhost:8080/graphql/', {
+            axios.post('http://localhost/graphql/', {
                 query: `
   {
     getPosts(option: true) {
@@ -25,7 +25,7 @@ import {CircularProgress} from "@mui/material";
                     setLoading(false)
                     const andrey = res.data.data.getPosts
 
-
+                    console.log(andrey)
 
 
 

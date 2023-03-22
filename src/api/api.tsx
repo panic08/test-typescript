@@ -1,7 +1,7 @@
 import axios from "axios";
-const URL = "http://localhost:8080/api/v1";
+const URL = "http://localhost/api/v1/sendPost";
 const getPosts = () => {
-    axios.post('http://localhost:8080/graphql/', {
+    axios.post('http://localhost/graphql/', {
         query: `
   {
     getPosts(option: true) {
