@@ -1,6 +1,15 @@
 import React from 'react';
 import  form from "../../UI/styles/forms.module.scss";
+const SockJS = require('sockjs-client')
+const Stomp = require('stompjs')
+
 const Form = ({message} : {message: string}) => {
+
+
+
+
+
+
     return (
         <div>
                 <div className={form.form}>
